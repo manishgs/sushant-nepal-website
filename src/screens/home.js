@@ -5,13 +5,38 @@ import { Link } from 'react-router-dom';
 import $ from 'jquery';
 import '../assets/js/animatedheadline';
 
+const skillSet = [
+    { skill: "html", percentage: 80 },
+    { skill: "css", percentage: 50 },
+    { skill: "scss", percentage: 80 },
+    { skill: "redux", percentage: 80 },
+    { skill: "scss", percentage: 60 },
+    { skill: "mongobd", percentage: 60 },
+    { skill: "expressjs", percentage: 70 },
+    { skill: "nodejs", percentage: 40 },
+    { skill: "reactjs", percentage: 90 },
+    { skill: "adobe", percentage: 70 },
+    { skill: "photoshop", percentage: 80 },
+    { skill: "mocha", percentage: 60 },
+    { skill: "chai", percentage: 80 },
+    { skill: "vanillajs", percentage: 80 },
+    { skill: "git", percentage: 50 },
+    { skill: "ajax", percentage: 70 },
+]
 class Home extends Component {
+    constructor(props) {
+        super(props);
+        this.state = { hightlight: null };
+    }
+
     componentDidMount() {
         $('.animate-scale').animatedHeadline({
             animationType: 'clip'
         });
     }
+
     render() {
+        const { hightlight } = this.state;
         return (
             <Page title="Home Page" description='__YOURINPUT__'>
                 <div className="container banner">
@@ -32,26 +57,7 @@ class Home extends Component {
                             <Link to="/portfolio" className="btn btn-primary">View Portfolio</Link>
                         </div>
                         <div className="col-md-5 no-pad">
-                            <Bubble data={
-                                [
-                                    { skill: "html", percentage: 80 },
-                                    { skill: "css", percentage: 50 },
-                                    { skill: "scss", percentage: 80 },
-                                    { skill: "redux", percentage: 80 },
-                                    { skill: "scss", percentage: 60 },
-                                    { skill: "mongobd", percentage: 60 },
-                                    { skill: "expressjs", percentage: 70 },
-                                    { skill: "nodejs", percentage: 40 },
-                                    { skill: "reactjs", percentage: 90 },
-                                    { skill: "adobe", percentage: 70 },
-                                    { skill: "photoshop", percentage: 80 },
-                                    { skill: "mocha", percentage: 60 },
-                                    { skill: "chai", percentage: 80 },
-                                    { skill: "vanillajs", percentage: 80 },
-                                    { skill: "git", percentage: 50 },
-                                    { skill: "ajax", percentage: 70 },
-                                ]
-                            } />
+                            <Bubble hightlight={hightlight} data={skillSet} />
                         </div>
                     </div>
                 </div>

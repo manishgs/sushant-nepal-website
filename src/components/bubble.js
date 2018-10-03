@@ -3,9 +3,22 @@ import * as d3 from 'd3';
 let width = 350,
     height = 350;
 
+
 class Bubble extends PureComponent {
     componentDidMount() {
-        this.renderBubbleChart(this.props.data);
+        this.renderBubbleChart(this.props.data.map(this.resetPercentage));
+    }
+
+    resetPercentage = skill => {
+        if (skill.percentage < 50) {
+            skill.percentage = 25;
+        } else if (skill.percentage > 50 && skill.percentage < 75) {
+            skill.percentage = 50;
+        } else if (skill.percentage > 75) {
+            skill.percentage = 75;
+        }
+
+        return skill;
     }
 
     renderBubbleChart(dataset) {
@@ -16,7 +29,7 @@ class Bubble extends PureComponent {
             .select(this.bubbleChart)
             .append('svg')
             .attr('class', 'chart')
-            .attr('viewBox', '0 0 300 300');
+            .attr('viewBox', '0 0 310 310');
         let maxValue = d3.max(dataset, function (d) {
             return 0;
         });
