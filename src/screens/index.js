@@ -16,7 +16,7 @@ class Index extends Component {
                     <Route exact path="/" component={Home} />
                     <Route exact path="/about" component={About} />
                     <Route exact path="/contact" component={Contact} />
-                    <Route exact path="/project" component={Project} />
+                    <Route exact path="/portfolio" component={Project} />
                     <Route component={NoMatch} />
                 </Switch>
             </App>

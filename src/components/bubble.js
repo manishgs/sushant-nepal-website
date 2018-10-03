@@ -87,14 +87,12 @@ class Bubble extends PureComponent {
             .attr('dy', '.2em')
             .style('text-anchor', 'middle')
             .text(function (d, i) {
-                return i < 5
-                    ? d.skill.length > 6
-                        ? d.skill.substring(0, 3) + '..'
-                        : d.skill
-                    : null;
+                return d.skill.length > 6
+                    ? d.skill.substring(0, 3) + '..'
+                    : d.skill;
             })
             .style('font-size', function (d) {
-                return radiusScale(d.parcentage) >= 50 ? '18px' : '12px';
+                return radiusScale(d.percentage) >= 50 ? '18px' : '12px';
             })
             .style('color', '#3a424c')
             .style('font-weight', 'normal');
@@ -103,10 +101,10 @@ class Bubble extends PureComponent {
             .attr('dy', '1.3em')
             .style('text-anchor', 'middle')
             .text(function (d, i) {
-                return i < 5 ? d.parcentage : null;
+                return null;
             })
             .style('font-size', function (d) {
-                return radiusScale(d.parcentage) >= 50 ? '24px' : '14px';
+                return radiusScale(d.percentage) >= 50 ? '24px' : '14px';
             })
             .style('color', '#3a424c')
             .style('font-weight', 'bold');
@@ -114,24 +112,14 @@ class Bubble extends PureComponent {
         function onMouseOver(d) {
             const html = `
     <div>
-        <table class='table'>
-            <tbody>
-                <tr>
-                    <td>Skill</td>
-                    <td>${d.skill}</td>
-                </tr>
-                <tr>
-                    <td>Percentage</td>
-                    <td>USD ${d.parcentage}</td>
-                </tr>
-            </tbody>
-        </table>
+    ${d.skill} - ${d.percentage}%
     </div>
     `;
             tooltip
                 .style('left', Math.max(0, d3.event.pageX - 30) + 'px')
                 .style('top', d3.event.pageY + 10 + 'px')
                 .style('display', 'inline-block')
+                .style('opacity', 1)
                 .html(html);
         }
         let tooltip = d3
@@ -144,20 +132,20 @@ class Bubble extends PureComponent {
             PercentageText.attr('x', d => d.x).attr('y', d => d.y);
         }
         function fillColor(percentage) {
-             if (percentage < 25) {
-                 return "#b0b6be";
-                }
-                if (percentage >= 25 && percentage < 50) {
-                    return "#7dd3d0";
-                }
+            if (percentage < 25) {
+                return "#b0b6be";
+            }
+            if (percentage >= 25 && percentage < 50) {
+                return "#7dd3d0";
+            }
 
-                if (percentage >= 50 && percentage <= 75) {
-                    return "#b99898";
-                }
+            if (percentage >= 50 && percentage <= 75) {
+                return "#b99898";
+            }
 
-                if (percentage > 75) {
-                    return "#ff8d8d";
-                }
+            if (percentage > 75) {
+                return "#ff8d8d";
+            }
         }
     }
     render() {

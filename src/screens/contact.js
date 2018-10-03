@@ -7,12 +7,12 @@ class Contact extends Component {
             <Page title="Contact" description='__YOURINPUT__'>
                 <div className="container">
 
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="section-header fadeInDown animated">
-                                <p class="line-one"></p>
+                    <div className="row">
+                        <div className="col-md-12">
+                            <div className="section-header fadeInDown animated">
+                                <p className="line-one"></p>
                                 <h2>Contact</h2>
-                                <p class="line-one"></p>
+                                <p className="line-one"></p>
                             </div>
                         </div>
                     </div>
@@ -21,7 +21,7 @@ class Contact extends Component {
                         <div className="col-md-4 col-sm-4">
                             <div className="single-contact text-center wow fadeInDown animated" data-wow-delay="0.4s">
                                 <i className="fa fa-home"></i>
-                                <h2>Location</h2>
+                                <h2>Location:</h2>
                                 <p>123, New York, USA</p>
                             </div>
                         </div>
@@ -35,7 +35,7 @@ class Contact extends Component {
                         <div className="col-md-4 col-sm-4">
                             <div className="single-contact text-center wow fadeInDown animated" data-wow-delay="0.8s">
                                 <i className="fa fa-envelope-o"></i>
-                                <h2>Email</h2>
+                                <h2>Email:</h2>
                                 <p>yourdomain@gmail.com</p>
                             </div>
                         </div>
@@ -46,7 +46,7 @@ class Contact extends Component {
 
                     <div className="row contact-form">
                         <div className="col-md-10 col-md-offset-1">
-                            <form id="contact-form" method="post" action="contact.php" className="wow fadeInDown animated" data-wow-delay="1.2s" novalidate="true">
+                            <form id="contact-form" method="post" action="contact.php" className="wow fadeInDown animated" data-wow-delay="1.2s">
                                 <div className="messages"></div>
                                 <div className="controls">
                                     <div className="row">
