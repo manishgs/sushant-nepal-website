@@ -10,14 +10,16 @@ class Bubble extends PureComponent {
     }
 
     resetPercentage = skill => {
-        if (skill.percentage < 50) {
-            skill.percentage = 25;
+        if (skill.percentage <= 50) {
+            skill.range = 40;
+            skill.category = 'low';
         } else if (skill.percentage > 50 && skill.percentage < 75) {
-            skill.percentage = 50;
-        } else if (skill.percentage > 75) {
-            skill.percentage = 75;
+            skill.range = 80;
+            skill.category = 'medium';
+        } else if (skill.percentage >= 75) {
+            skill.range = 100;
+            skill.category = 'high';
         }
-
         return skill;
     }
 
@@ -29,12 +31,12 @@ class Bubble extends PureComponent {
             .select(this.bubbleChart)
             .append('svg')
             .attr('class', 'chart')
-            .attr('viewBox', '0 0 310 310');
+            .attr('viewBox', '0 0 300 320');
         let maxValue = d3.max(dataset, function (d) {
-            return 0;
+            return 1000;
         });
         let minValue = d3.min(dataset, function (d) {
-            return 100;
+            return 10;
         });
         const getRadiusScale = (rMin, rMax) => {
             return d3
@@ -51,7 +53,7 @@ class Bubble extends PureComponent {
             .force(
                 'collide',
                 d3.forceCollide(function (d) {
-                    return radiusScale(d.percentage) + 1;
+                    return radiusScale(d.range) + 1;
                 })
             );
         let g = svg
@@ -61,20 +63,7 @@ class Bubble extends PureComponent {
             .append('g')
             .attr('class', 'circle-group')
             .attr('id', d => {
-                if (d.percentage < 25) {
-                    return "low-skill";
-                }
-                if (d.percentage > 25 && d.percentage < 50) {
-                    return "middle-skill";
-                }
-
-                if (d.percentage > 50 && d.percentage < 75) {
-                    return "upper-middle-skill";
-                }
-
-                if (d.percentage > 75) {
-                    return "higher-skill";
-                }
+                return d.category;
             })
             .attr('opacity', '0.8')
             .attr('transform', 'translate(' + width / 2 + ',' + height / 2 + ')')
@@ -90,10 +79,10 @@ class Bubble extends PureComponent {
             .append('circle')
             .attr('class', 'circle')
             .attr('r', function (d) {
-                return radiusScale(d.percentage);
+                return radiusScale(d.range);
             })
             .attr('fill', function (d) {
-                return fillColor(d.percentage);
+                return fillColor(d.category);
             });
         let SkillText = g
             .append('text')
@@ -105,7 +94,7 @@ class Bubble extends PureComponent {
                     : d.skill;
             })
             .style('font-size', function (d) {
-                return radiusScale(d.percentage) >= 50 ? '18px' : '12px';
+                return radiusScale(d.range) >= 50 ? '18px' : '12px';
             })
             .style('color', '#3a424c')
             .style('font-weight', 'normal');
@@ -117,7 +106,7 @@ class Bubble extends PureComponent {
                 return null;
             })
             .style('font-size', function (d) {
-                return radiusScale(d.percentage) >= 50 ? '24px' : '14px';
+                return radiusScale(d.range) >= 50 ? '24px' : '14px';
             })
             .style('color', '#3a424c')
             .style('font-weight', 'bold');
@@ -144,19 +133,15 @@ class Bubble extends PureComponent {
             SkillText.attr('x', d => d.x).attr('y', d => d.y);
             PercentageText.attr('x', d => d.x).attr('y', d => d.y);
         }
-        function fillColor(percentage) {
-            if (percentage < 25) {
+        function fillColor(category) {
+            if (category === 'low') {
                 return "#b0b6be";
             }
-            if (percentage >= 25 && percentage < 50) {
+            if (category === 'medium') {
                 return "#7dd3d0";
             }
 
-            if (percentage >= 50 && percentage <= 75) {
-                return "#b99898";
-            }
-
-            if (percentage > 75) {
+            if (category === 'high') {
                 return "#ff8d8d";
             }
         }
