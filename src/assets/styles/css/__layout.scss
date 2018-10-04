@@ -100,29 +100,3 @@
 
   .one-half.column                { width: 48%; }
 }
-
-
-@media (max-width: 768px) {
-  .column, .columns {
-        width:100% !important;
-        margin-left: 0px !important;
-        float: none;
-        text-align: center
-    }
-
-    .bubble {
-        margin-top:50px;
-    }
-
-    footer .social-media {
-        float:none;
-    }
-    .single-contact {
-        margin-bottom: 10px
-    }
-
-    .portfolio-items .columns{
-        margin-top: 20px;
-        display: table;
-    }
-}

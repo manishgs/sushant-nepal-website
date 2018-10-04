@@ -1,0 +1,65 @@
+
+.toggleNav {
+    display: none;
+    position: fixed;
+    top:20px;
+    right:20px;
+    z-index: 99999;
+    font-size: 30px;
+    color:#fff;
+}
+
+@media (max-width: 768px) {
+  .column, .columns {
+        width:100% !important;
+        margin-left: 0px !important;
+        float: none;
+        text-align: center
+    }
+
+    .bubble {
+        margin-top:50px;
+    }
+
+    footer .social-media {
+        float:none;
+    }
+    .single-contact {
+        margin-bottom: 10px
+    }
+
+    .portfolio-items .columns{
+        margin-top: 20px;
+        display: table;
+    }
+
+    .banner {
+        padding-top:20px;
+    }
+
+    .toggleNav {
+        display: block;
+    }
+
+    .navbar{
+        display:none;
+        position: fixed;
+        background: #32323ef2;
+        right: 0px;
+        top: 0px;
+        margin: 0px;
+        bottom: 0px;
+        z-index: 20000;
+         ul  {
+             padding:70px 100px 50px 0px;
+
+             li {
+                float:none;
+                padding:20px;
+             }
+        }
+    }
+    .navbar.active{
+        display:block;
+    }
+}
