@@ -1,0 +1,35 @@
+
+footer {
+    background:#111F3F;
+  /*   position: fixed;
+    bottom:0px;
+    right:0px;
+    left:0px; */
+    padding:15px;
+    p{
+        color:#fff;
+        margin-top:7px;
+    }
+    a, i {
+        color:#959FBA;
+    }
+    a:hover, i:hover {
+        color:#CA1254;
+    }
+    .social-media {
+        text-align: center;
+        float:right;
+        ul {
+            list-style: none;
+            display: table;
+            margin:auto;
+            li {
+                float:left;
+                margin-left: 20px;
+                a {
+                    font-size:20px;
+                }
+            }
+        }
+    }
+}

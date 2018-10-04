@@ -1,6 +1,6 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
-import '../assets/styles/css/common.scss';
+import '../assets/styles/css/style.scss';
 import { Header, Footer } from './layouts';
 
 const App = ({ children }) => {

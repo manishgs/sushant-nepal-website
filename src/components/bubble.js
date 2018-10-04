@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import * as d3 from 'd3';
-let width = 350,
-    height = 350;
+let width = 300,
+    height = 300;
 
 
 class Bubble extends PureComponent {
@@ -31,7 +31,7 @@ class Bubble extends PureComponent {
             .select(this.bubbleChart)
             .append('svg')
             .attr('class', 'chart')
-            .attr('viewBox', '0 0 300 320');
+            .attr('viewBox', '0 0 300 300');
         let maxValue = d3.max(dataset, function (d) {
             return 1000;
         });

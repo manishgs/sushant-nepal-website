@@ -4,12 +4,12 @@ const Footer = () => (
     <footer>
         <div className="container">
             <div className="row">
-                <div className="col-lg-6 col-md-6 col-sm-6">
+                <div className="six columns">
                     <div className="copyright">
                         <p>© Copyright 2018, <a href="/">Sushant Nepal</a></p>
                     </div>
                 </div>
-                <div className="col-md-6 col-md-6 col-sm-6 text-right">
+                <div className="six columns">
                     <div className="social-media">
                         <ul>
                             <li><a href="/"><i className="fa fa-dribbble" aria-hidden="true"></i></a></li>

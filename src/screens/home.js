@@ -39,24 +39,22 @@ class Home extends Component {
         const { hightlight } = this.state;
         return (
             <Page title="Home Page" description='__YOURINPUT__'>
-                <div className="container banner">
-                    <div className="row">
-                        <div className="col-md-7 animate-scale no-pad">
+                <div className="container">
+                    <div className="row banner">
+                        <div className="seven columns animate-scale no-pad">
                             <h3>Welcome to My Website</h3>
-                            <h2>My name is <br />Sushant Nepal</h2>
-                            <h1 className="ah-headline">
+                            <h1>My name is <br />Sushant Nepal</h1>
+                            <h2 className="ah-headline">
                                 <span className="iam">& I am a </span>
                                 <span className="ah-words-wrapper">
                                     <b className="is-visible">Web Designer</b>
                                     <b>Photographer</b>
                                     <b>Web Developer</b>
                                 </span>
-                            </h1>
-
-
-                            <Link to="/portfolio" className="btn btn-primary">View Portfolio</Link>
+                            </h2>
+                            <Link to="/portfolio" className="btn-primary">View Portfolio</Link>
                         </div>
-                        <div className="col-md-5 no-pad">
+                        <div className="five columns no-pad">
                             <Bubble hightlight={hightlight} data={skillSet} />
                         </div>
                     </div>
